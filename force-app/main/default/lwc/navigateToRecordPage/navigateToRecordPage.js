@@ -1,0 +1,65 @@
+import { LightningElement } from 'lwc';
+import {NavigationMixin} from 'lightning/navigation'
+export default class NavigateToRecordPage extends NavigationMixin(LightningElement) {
+    recordViewMode(){
+        this[NavigationMixin.Navigate]({
+            type:'standard__recordPage',
+            attributes:{
+                recordId:'0036D00000P04xpQAB',
+                objectApiName:'Contact',
+                actionName:'view'
+            }
+        })
+    }
+    recordEditMode(){
+        this[NavigationMixin.Navigate]({
+            type:'standard__recordPage',
+            attributes:{
+                recordId:'0036D00000P04xpQAB',
+                objectApiName:'Contact',
+                actionName:'edit'
+            }
+        })
+    }
+    navigateToTab(){
+        this[NavigationMixin.Navigate]({
+            type:'standard__navItemPage',
+            attributes:{
+                apiName:'Quizz_App'
+            }
+        })
+    }
+    navigateToRelatedList(){
+        this[NavigationMixin.Navigate]({
+            type:'standard__recordRelationshipPage',
+            attributes:{
+                recordId:'0016D00000WvZfiQAF',
+                objectApiName:'Account',
+                relationshipApiName:'Contacts',
+                actionName:'view'
+            }
+        })
+    }
+    navigateToWeb(){
+        this[NavigationMixin.Navigate]({
+            type:'standard__webPage',
+            attributes:{
+               url:"https://www.salesforcetroop.com"
+            }
+        })
+    }
+    navigateToLWC(){
+        var defination={
+            componentDef:'c:helloWorld',
+            attributes:{
+                recordId:'213465468799'
+            }
+        }
+        this[NavigationMixin.Navigate]({
+            type:'standard__webPage',
+            attributes:{
+               url:'/one/one.app#'+btoa(JSON.stringify(defination))
+            }
+        })
+    }
+}
